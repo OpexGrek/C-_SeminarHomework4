@@ -13,33 +13,26 @@ int Stepen(int C, int D)                                        //Функция
     return E;
 }
 
-Console.Clear();
-Console.Write("Input number A: ");                              //Ввод числа А
-string strA = Console.ReadLine();
-
-bool resultA = int.TryParse(strA, out int F);                   // Проверка на ввод букв
-if (resultA == false)
+int ProverkaString(string Z)                                    //функция проверки ввода букв вместо цифр
 {
-    Console.WriteLine("You should input only numbers");
-    Environment.Exit(0);
-}
-else
-{
-    int A = Convert.ToInt32(strA);                              //Если проверка пройдена, переводим А в число
-
-    Console.Write("Input number B: ");                          //Ввод числа В
-    string strB = Console.ReadLine();
-
-    bool resultB = int.TryParse(strB, out int G);               // Проверка на ввод букв
-    if (resultB == false)
+    bool resultA = int.TryParse(Z, out int F);                  // Проверка на ввод букв
+    if (resultA == false)
     {
         Console.WriteLine("You should input only numbers");
         Environment.Exit(0);
     }
-    else
-    {
-        int B = Convert.ToInt32(strB);                          //Если проверка пройдена, переводим В в число
-        Console.WriteLine();                                    //Доп строка для красоты вывода
-        Console.WriteLine("Number A^B = " + Stepen(A, B));      //Вывод результата
-    }
-}    
+    int A = Convert.ToInt32(Z);                                 //Если проверка пройдена, переводим А в число
+    return A;
+}
+
+Console.Clear();
+Console.Write("Input number A: ");                              //Ввод числа А
+string strA = Console.ReadLine();
+int A = ProverkaString(strA);                                   //Вызываем функцию для проверки ввода числа вместо букв
+
+Console.Write("Input number B: ");                              //Ввод числа В
+string strB = Console.ReadLine();
+int B = ProverkaString(strB);                                   //Вызываем функцию для проверки ввода числа вместо букв
+        
+Console.WriteLine();                                            //Доп строка для красоты вывода
+Console.WriteLine("Number A^B = " + Stepen(A, B));              //Вывод результата
